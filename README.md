@@ -44,7 +44,7 @@ basicamente vamos usar regex (Expressão regular) para definir padrões de texto
 
 ### Body parser
 
-Depois vamos para o body-parser.js que vai fazer a transformação dos dados
+Depois vamos para o body-parser-req.js que vai fazer a transformação dos dados
 
 ```javascript
 
