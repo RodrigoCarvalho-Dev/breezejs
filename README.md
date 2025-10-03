@@ -398,7 +398,7 @@ Aqui estarei fazendo uma chamada http para a api do gemini
 ```javascript
 
 import breeze from "../app.js";
-
+import loadenv from "../utils/loadenv.js"
 
 const app = breeze();
 
@@ -469,6 +469,57 @@ então me retornará
 {
 	"message": "Olá! Como posso ajudar?"
 }
+
+```
+### bônus
+
+Vamos criar também o loadenv para nossa aplicação carregar as variáveis ambientes
+
+```javascript
+
+import fs from "fs";
+import path from "path";
+/**
+ * 
+ * 
+ * @returns {Promise<void>}
+ */
+
+async function loadenv() {
+
+    const filePath = path.resolve(process.cwd(), ".env")
+
+    const file = await fs.readFileSync(filePath, "utf-8");
+
+    const formatFile = file.split("\n").map(line => {  
+        line = line.replace("=", " ");  
+        
+        const [key, ...item] = line.split(" ");  
+      
+        return {
+          key,
+          item: item.join(" ")
+        };
+      });
+
+    formatFile.map( object => {
+        process.env[object.key] = object.item;
+    });
+
+    // console.log(process.env.GEMINI_API_KEY);
+
+}
+
+( async () => {
+
+    // caso queira ver o resultado
+    // await loadenv();
+
+})();
+
+
+export default loadenv;
+
 
 ```
 
