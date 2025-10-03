@@ -1,5 +1,7 @@
 import breeze from "../app.js";
+import loadenv from "../utils/loadenv.js";
 
+loadenv();
 
 const app = breeze();
 
@@ -10,9 +12,9 @@ app.post("/", async ( req, res ) => {
     const { response } = await req.getBody();
 
     // gemini key 
-    const API_KEY = String("AIzaSyBJ5KPMSJicP3ZkRGDLL5xXMC713MptVdk"); // coloque sua chave da api gemini
+    const API_KEY = String(process.env.GEMINI_API_KEY); // coloque sua chave da api gemini
 
-    const response_api_gemini = await fetch(String("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"), { // coloque sua url da api
+    const response_api_gemini = await fetch(String(process.env.GEMINI_AI_URL), { // coloque sua url da api
 
         method : "POST",
         headers : {
