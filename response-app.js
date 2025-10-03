@@ -44,5 +44,5 @@ function enhanceResponse(res) {
 }
 
   
-module.exports = enhanceResponse;
+export default enhanceResponse;
   

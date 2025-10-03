@@ -1,0 +1,14 @@
+{
+  "type" : "module",
+  "scripts": {
+    "dev" : "node src/server.js",
+    "build" : "node"
+  },
+  "name": "breezejs",
+  "version": "1.0.0",
+  "description": "a mini framework for Node.js",
+  "main": "src/server.js",
+  "repository": "https://github.com/RodrigoCarvalho-Dev/rapidjs.git",
+  "author": "RodrigoCarvalho-Dev <rodrigosms103042r6@gmail.com>",
+  "license": "MIT"
+}

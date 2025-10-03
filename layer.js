@@ -1,4 +1,13 @@
-import pathToRegex from "./utils/path-to-regex";
+import pathToRegex from "./utils/path-to-regex.js";
+
+
+/**
+ * 
+ * @param {*} method 
+ * @param {*} path 
+ * @param {*} handler 
+ * @returns 
+ */
 
 function createLayer(method, path, handler) {
   if (typeof path === 'function') {

@@ -1,11 +1,46 @@
 import * as http from "http"
 import * as url from "url"
-import createLayer from "./layer";
-import enhanceResponse from "./response-app";
-import enhanceRequest from "./request-app"
-import handleError from "./utils/error";
+import createLayer from "./layer.js";
+import enhanceResponse from "./response-app.js";
+import enhanceRequest from "./request-app.js"
+import handleError from "./utils/error.js";
 
 // o app.js vai orquestrar tudo 
+
+/**
+ * @typedef {Object} RequestWithExtras
+ * @property {string} path
+ * @property {import("querystring").ParsedUrlQuery} query
+ * @property {Record<string, string>} params
+ * @property {() => Promise<any>} getBody
+ */
+
+/**
+ * @typedef {Object} ResponseWithExtras
+ * @property {(obj: any) => void} json
+ * @property {(text: string) => void} send
+ */
+
+/**
+ * @typedef {(req: import("http").IncomingMessage & RequestWithExtras, res: import("http").ServerResponse & ResponseWithExtras, next?: Function) => any|Promise<any>} Handler
+ */
+
+/**
+ * @typedef {Object} BreezeApp
+ * @property {(pathOrFn: string|Handler, maybeFn?: Handler) => BreezeApp} use
+ * @property {(path: string, handler: Handler) => BreezeApp} get
+ * @property {(path: string, handler: Handler) => BreezeApp} post
+ * @property {(path: string, handler: Handler) => BreezeApp} put
+ * @property {(path: string, handler: Handler) => BreezeApp} delete
+ * @property {(path: string, handler: Handler) => BreezeApp} patch
+ * @property {(path: string, handler: Handler) => BreezeApp} all
+ * @property {(port: number, cb?: () => void) => http.Server} listen
+
+/**
+ * 
+ * @returns {BreezeApp}
+ * 
+ */
 
 function breeze() {
   const layers = [];
@@ -20,6 +55,8 @@ function breeze() {
     }
     return app;
   };
+
+
 
   ['get','post','put','delete','patch','all'].forEach(verb => {
     app[verb] = (path, handler) => {
