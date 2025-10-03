@@ -2,6 +2,8 @@
 
 o intuito dessa aplicação é mostrar como o **Node.js** consegue ser uma tecnologia versátil e que criar libs e frameworks pode ser "de certa forma" até simples
 
+<img width="250" height="250" alt="Breeze js" src="https://github.com/user-attachments/assets/b9090c15-16c3-4b93-9e49-2afa87eea534" />
+
 **Funcionalidades** que o framework vai ter
 - app.use(middleware)
 - app.METHOD(path, handler) para GET, POST, PUT, DELETE, PATCH, ALL
